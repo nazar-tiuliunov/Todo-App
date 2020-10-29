@@ -1,0 +1,50 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+body,
+h1, h2, h3, h4,
+p,
+ul[class], ol[class], li,
+figure, figcaption,
+blockquote,
+dl, dd {
+	margin: 0;
+}
+html,body {
+   height: 100%;
+   font-family: 'Syne Mono', monospace;
+}
+
+body {
+	scroll-behavior: smooth;
+	text-rendering: optimizeSpeed;
+	line-height: 1.5;
+}
+ul[class],
+ol[class] {
+	padding: 0;
+	list-style: none;
+}
+a {
+	text-decoration: none;
+}
+input,
+button,
+textarea,
+select {
+	font: inherit;
+	border: none;
+	outline: none;
+	cursor: pointer;
+}
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+   min-height: 100%;
+   background: #a4978e;
+	overflow: hidden;
+}
+@import './components/toDo/toDo.scss'

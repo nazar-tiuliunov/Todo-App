@@ -1,0 +1,124 @@
+.container {
+   max-width: 100%;
+   width: 100%;
+   max-height: 100%;
+   padding: 15px;
+   color: #040c0e;
+   font-weight: bold;
+}
+.todo {
+   max-width: 1100px;
+   width: 100%;
+   margin: 0 auto;
+      &__flex {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: space-between;
+         min-height: 100vh;
+         padding: 50px;
+         color: #fff;
+
+      }
+		&__newTasks {
+         flex-basis: 220px;
+         flex-grow: 2;
+         max-width: 100%;
+         width: 100%;
+         overflow-y: auto;
+         &::-webkit-scrollbar {
+            width: 5px;
+            background-color: #525b56;
+         }
+         &::-webkit-scrollbar-thumb {
+            background-color: #a4978e;
+            border-radius: 5px;
+            border: 2px solid #525b56;
+         }
+		}
+
+		&__addTask {
+         display: flex;
+         align-items: center;
+         flex-grow: 1;
+         max-width: 100%;
+         width: 100%;
+      }
+
+      &__completedTasks {
+         @extend .todo__newTasks;
+      }
+
+		&__form {
+         display: flex;
+         justify-content: space-between;
+			&_enterTask {
+            flex-grow: 4;
+            padding: 15px;
+            border: 2px solid #132226;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+			}
+
+			&_addTask {
+            flex-grow: 1;
+            padding: 15px 30px;
+            background-color: #132226;
+            color: #fff;
+            letter-spacing: 1.5px;
+            border-radius: 0 5px 5px 0;
+            border: none;
+            outline: none;
+            transition: .3s;
+            &:hover {
+               background: #525b56;
+            }
+			}
+		}
+
+      &__tasks {
+         &_task {
+            display: block;
+            position: relative;
+            max-width: 70%;
+            width: 100%;
+            margin: 10px auto;
+            padding: 10px;
+            background: #ffffff;
+            border-radius: 5px 0 0 5px;
+            transform-style: preserve-3d;
+
+            &:hover .todo__tasks.deleteTask {
+               transform: translateX(75px) translateZ(-1px);
+            }
+            &:hover .todo__tasks.moveTask {
+               transform: translateX(-95px) translateZ(-1px);
+            }
+            &.completed {
+               text-decoration: line-through;
+            }
+         }
+         &.deleteTask {
+               position: absolute;
+               right: 0;
+               top: 0;
+               padding: 10px;
+               color: #fff;
+               background: #132226;
+               border-radius: 0 5px 5px 0;
+               transition: .3s;
+               transform: translateX(10px) translateZ(-1px);
+               &:hover {
+                  background: #be9063;
+               }
+            }
+            &.moveTask {
+               @extend .todo__tasks.deleteTask;
+               left: 0;
+               border-radius: 5px 0 0 5px;
+               transform: translateX(-10px) translateZ(-1px);
+            }
+      }
+
+
+}
