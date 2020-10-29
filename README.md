@@ -1,4 +1,4 @@
-# ReactJs-projects
+# Simple Todo App 😃
 
 =======
 
