@@ -34,10 +34,22 @@ export default class Todos extends Component {
          <div className="todo">
             <div className="todo__flex">
                Tasks:
-               <Tasks todos={this.state.todos} removeItem={this.removeItem.bind(this)} moveItem={this.moveItem.bind(this)} />
-               <Form text={this.state.text} todos={this.state.todos} addItem={this.addItem.bind(this)} updateValue={this.updateValue.bind(this)} />
+               <div className='todo__newTasks'>
+                  <div className="conta</div>iner">
+                     <Tasks todos={this.state.todos} removeItem={this.removeItem.bind(this)} moveItem={this.moveItem.bind(this)} />
+                  </div>
+               </div>
+               <div className="todo__addTask">
+                  <div className="container">
+                     <Form text={this.state.text} todos={this.state.todos} addItem={this.addItem.bind(this)} updateValue={this.updateValue.bind(this)} />
+                  </div>
+               </div>
                Completed:
-               <Completed completed={this.state.completed} deleteItem={this.deleteItem.bind(this)} />
+               <div className="todo__completedTasks">
+                  <div className="container">
+                     <Completed completed={this.state.completed} deleteItem={this.deleteItem.bind(this)} />
+                  </div>
+               </div>
             </div>
          </div>
       );
