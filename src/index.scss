@@ -14,7 +14,7 @@ dl, dd {
 }
 html,body {
    height: 100%;
-   font-family: 'Syne Mono', monospace;
+   font-family: 'Trispace', sans-serif;
 }
 
 body {
@@ -30,21 +30,13 @@ ol[class] {
 a {
 	text-decoration: none;
 }
-input,
-button,
-textarea,
-select {
-	font: inherit;
-	border: none;
-	outline: none;
-	cursor: pointer;
-}
+input { margin: 0;}
 .wrapper {
 	display: flex;
 	flex-direction: column;
 	position: relative;
-   min-height: 100%;
-   background: #a4978e;
+   min-height: 100vh;
 	overflow: hidden;
 }
+@import url('https://fonts.googleapis.com/css2?family=Trispace:wght@200;400&display=swap');
 @import './components/toDo/toDo.scss'
