@@ -10,6 +10,7 @@ export default class Todos extends Component {
          todos: [],
          text: '',
          isChecked: true,
+         handleCheck: false
       };
    }
 
@@ -18,38 +19,34 @@ export default class Todos extends Component {
    }
    addItem(e) {
       e.preventDefault();
-      this.setState({ todos: [this.state.text, ...this.state.todos], text: '' });
+      this.setState({ todos: [[this.state.text.toString(), this.state.handleCheck], ...this.state.todos], text: '' });
    }
    removeItem(index) {
       this.setState({ todos: this.state.todos.filter((_, i) => i !== index) });
    }
-   checkedAll() {
+   checkAll() {
       this.setState({
+         isChecked: !this.state.isChecked,
+         todos: this.state.isChecked ? this.state.todos.map(item => [item[0], item[1] = true]) : this.state.todos.map(item => [item[0], item[1] = false])
+      });
+   }
+   clearCompleted() {
+      this.setState({
+         todos: this.state.todos.filter(item => item[1] === false),
          isChecked: !this.state.isChecked
-      })
-      const elements = document.querySelectorAll('.todo__task_complete');
-      if (this.state.isChecked) {
-         elements.forEach(item => item.setAttribute('checked', 'checked'));
-      } else {
-         elements.forEach(item => item.removeAttribute('checked'));
-      }
+      });
+   }
+   checkHandler(index) {
+      this.setState({
+         handleCheck: !this.state.handleCheck
+      });
+      this.state.todos.find((_, i) => i === index)[1] = !this.state.handleCheck
    }
    handleKeyPress = (e) => {
       if (e.key === 'Enter') {
          e.preventDefault()
       }
    };
-   // setAttribute() {
-   //    this.setState({
-   //       isChecked: !this.state.isChecked
-   //    })
-   //    if (this.state.isChecked) {
-   //       document.querySelector('.todo__task_complete').setAttribute('checked', 'checked');
-   //    } else {
-   //       document.querySelector('.todo__task_complete').removeAttribute('checked');
-   //    }
-   // }
-
 
    render() {
       return (
@@ -68,13 +65,14 @@ export default class Todos extends Component {
                            index={index}
                            removeItem={this.removeItem.bind(this)}
                            handleKeyPress={this.handleKeyPress.bind(this)}
-                           setAttribute={this.setAttribute.bind(this)} />
+                           checkHandler={this.checkHandler.bind(this)}
+                           key={index} />
                      })}
                   </div>
                </div>
                <div className='todo__checkAll'>
                   <div className='container checkAll'>
-                     <input type='checkbox' onClick={this.checkedAll.bind(this)} />
+                     <input type='checkbox' onClick={this.checkAll.bind(this)} checked={!this.state.isChecked} />
                      <span className='todo__checkAll_text'>Check All</span>
                      <span className='todo__checkAll_text'>{this.state.todos.length} items left</span>
                   </div>
@@ -84,7 +82,7 @@ export default class Todos extends Component {
                      <Filter filter='All' />
                      <Filter filter='Active' />
                      <Filter filter='Completed' />
-                     <button className='todo__filter'>Clear Completed</button>
+                     <button onClick={this.clearCompleted.bind(this)} className='todo__filter'>Clear Completed</button>
                   </div>
                </div>
             </div>
