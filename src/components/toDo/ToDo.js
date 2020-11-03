@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Task from "./Task";
 import Form from './Form';
-import Filter from './Filter';
 
 export default class Todos extends Component {
    constructor(props) {
@@ -10,7 +9,6 @@ export default class Todos extends Component {
          todos: [],
          text: '',
          isChecked: true,
-         handleCheck: false
       };
    }
 
@@ -19,7 +17,7 @@ export default class Todos extends Component {
    }
    addItem(e) {
       e.preventDefault();
-      this.setState({ todos: [[this.state.text.toString(), this.state.handleCheck], ...this.state.todos], text: '' });
+      this.setState({ todos: [[this.state.text.toString(), false], ...this.state.todos], text: '' });
    }
    removeItem(index) {
       this.setState({ todos: this.state.todos.filter((_, i) => i !== index) });
@@ -30,17 +28,22 @@ export default class Todos extends Component {
          todos: this.state.isChecked ? this.state.todos.map(item => [item[0], item[1] = true]) : this.state.todos.map(item => [item[0], item[1] = false])
       });
    }
+   checkHandler(index) {
+      this.setState({
+         todos: this.state.todos.map((item, i) => {
+            if (i === index) {
+               item[1] = !item[1]
+            }
+            return item
+         })
+      })
+      console.log(`changen,${index}, ${this.state.todos}`)
+   }
    clearCompleted() {
       this.setState({
          todos: this.state.todos.filter(item => item[1] === false),
          isChecked: !this.state.isChecked
       });
-   }
-   checkHandler(index) {
-      this.setState({
-         handleCheck: !this.state.handleCheck
-      });
-      this.state.todos.find((_, i) => i === index)[1] = !this.state.handleCheck
    }
    handleKeyPress = (e) => {
       if (e.key === 'Enter') {
@@ -79,9 +82,9 @@ export default class Todos extends Component {
                </div>
                <div className='todo__filters'>
                   <div className='container filter'>
-                     <Filter filter='All' />
-                     <Filter filter='Active' />
-                     <Filter filter='Completed' />
+                     <button className='todo__filter' >All</button>
+                     <button className='todo__filter' >Active</button>
+                     <button className='todo__filter' >Completed</button>
                      <button onClick={this.clearCompleted.bind(this)} className='todo__filter'>Clear Completed</button>
                   </div>
                </div>
