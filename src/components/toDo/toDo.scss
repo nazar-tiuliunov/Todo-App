@@ -68,14 +68,15 @@
       &_complete {
          cursor: pointer;
          &:checked + .todo__task_text{
+            color: #cdcdcd;
             text-decoration: line-through;
+            font-style: italic;
          }
       }
       &_text {
          padding-left: 10px;
          font-size: 14px;
-         font-weight: 200;
-         outline: none;
+         font-weight: 300;
       }
       &_delete {
          margin-left: auto;
