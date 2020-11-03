@@ -42,7 +42,6 @@ export default class Todos extends Component {
    clearCompleted() {
       this.setState({
          todos: this.state.todos.filter(item => item[1] === false),
-         isChecked: !this.state.isChecked
       });
    }
    handleKeyPress = (e) => {
