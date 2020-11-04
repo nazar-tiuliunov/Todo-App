@@ -83,9 +83,9 @@ export default class tasks extends Component {
                </section>
                <section className='todo__filters'>
                   <div className='container filter'>
-                     <Filter className='todo__filter' content='All' />
-                     <Filter className='todo__filter' content='Active' />
-                     <Filter className='todo__filter' content='Completed' />
+                     <Filter content='All' />
+                     <Filter content='Active' />
+                     <Filter content='Completed' />
                      <button className='todo__filter' onClick={this.clearCompleted.bind(this)}>Clear Completed</button>
                   </div>
                </section>
