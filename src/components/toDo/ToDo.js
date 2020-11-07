@@ -10,6 +10,7 @@ export default class tasks extends Component {
          tasks: [], // array of objects with task text and it value
          text: '', // text of task
          isChecked: true, // state of 'completeAllTasks' checkbox
+         filterArray: ['All', 'Active', 'Completed']
       };
    };
 
@@ -50,21 +51,24 @@ export default class tasks extends Component {
    };
 
    render() {
+      const state = this.state;
+      const tasksNoun = state.tasks.length !== 1 ? 'tasks' : 'task';
+      const tasksRemain = `${state.tasks.length} ${tasksNoun} remaining`;
       return (
          <main className="todo">
             <div className="todo__flex">
                <h1 className='todo__title'>Todo App</h1>
                <section className="todo__addTask">
                   <div className="container addTask">
-                     <Form text={this.state.text}
-                        tasks={this.state.tasks}
+                     <Form text={state.text}
+                        tasks={state.tasks}
                         addTask={this.addTask.bind(this)}
                         updateValue={this.updateValue.bind(this)} />
                   </div>
                </section>
                <section className='todo__newTasks'>
                   <div className="container newTasks">
-                     {this.state.tasks.map((item, index) => {
+                     {state.tasks.map((item, index) => {
                         return <Task item={item}
                            index={index}
                            key={index}
@@ -76,16 +80,16 @@ export default class tasks extends Component {
                </section>
                <section className='todo__checkAll'>
                   <div className='container checkAll'>
-                     <input type='checkbox' checked={!this.state.isChecked} onChange={this.completeAllTasks.bind(this)} />
+                     <input type='checkbox' checked={!state.isChecked} onChange={this.completeAllTasks.bind(this)} />
                      <span className='todo__checkAll_text'>Check All</span>
-                     <span className='todo__checkAll_text'>{this.state.tasks.length} items left</span>
+                     <span className='todo__checkAll_text'>{tasksRemain}</span>
                   </div>
                </section>
                <section className='todo__filters'>
                   <div className='container filter'>
-                     <Filter content='All' />
-                     <Filter content='Active' />
-                     <Filter content='Completed' />
+                     {state.filterArray.map((value, index) => {
+                        return <Filter content={value} key={index} />
+                     })}
                      <button className='todo__filter' onClick={this.clearCompleted.bind(this)}>Clear Completed</button>
                   </div>
                </section>
