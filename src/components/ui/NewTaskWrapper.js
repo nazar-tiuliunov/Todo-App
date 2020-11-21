@@ -7,13 +7,21 @@ export default class NewTaskWrapper extends Component {
       return (
          <section className='todo__newTasks'>
             <div className="container newTasks">
-               {prop.tasks.map((item, index) => {
+               {prop.tasks.filter(item => {
+                  switch (prop.filter) {
+                     case 'Active':
+                        return item.completed === false;
+                     case 'Completed':
+                        return item.completed === true;
+                     default:
+                        return item
+                  }
+               }).map((item, index) => {
                   return <Task item={item}
-                     index={index}
+                     index={prop.tasks.indexOf(item)}
                      key={index}
                      removeTask={prop.removeTask.bind(this)}
-                     handleKeyPress={prop.handleKeyPress.bind(this)}
-                     checkHandler={prop.checkHandler.bind(this)} />
+                     checkboxHandler={prop.checkboxHandler.bind(this)} />
                })}
             </div>
          </section>

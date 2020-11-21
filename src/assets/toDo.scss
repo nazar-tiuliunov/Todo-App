@@ -41,15 +41,16 @@
       flex: 0 0 50px;
    }
    &__filter {
+      display: flex;
+      align-items: center;
       margin: 0 4px;
       padding: 5px 10px;
-      border: 2px solid #e6e6ea;
+      font-size: 14px;
+      //border: 2px solid #e6e6ea;
       background-color: transparent;
       cursor: pointer;
       transition: all .3s ease;
-      &:hover {
-         background-color: turquoise;
-      }
+      input[type='radio'] {margin-right: 5px;}
       &:first-child {margin: 0 4px 0 0;}
    }
    &__form {

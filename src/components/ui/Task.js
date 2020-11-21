@@ -7,9 +7,9 @@ export default class Task extends Component {
             <input className='todo__task_complete'
                type='checkbox'
                checked={this.props.item.completed}
-               onChange={() => { this.props.checkHandler(this.props.index) }}
+               onChange={() => { this.props.checkboxHandler(this.props.index) }}
             />
-            <p className='todo__task_text' onKeyPress={this.props.handleKeyPress}>{this.props.item.text}</p>
+            <p className='todo__task_text' >{this.props.item.text}</p>
             <span className='todo__task_delete' onClick={() => { this.props.removeTask(this.props.index) }} >&#10006;</span>
          </div>
       )

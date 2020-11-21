@@ -7,10 +7,17 @@ export default class FiltersWrapper extends Component {
       return (
          <section className='todo__filters'>
             <div className='container filter'>
+
                {prop.filterArr.map((value, index) => {
-                  return <Filter content={value} key={index} />
+                  return <Filter
+                     value={value}
+                     filterValue={prop.filterValue}
+                     key={index}
+                     filterHandler={prop.filterHandler.bind(this)}
+                  />
                })}
-               <button className='todo__filter' onClick={() => { prop.clearCompleted() }}>Clear Completed</button>
+               <button className='todo__filter' onClick={(e) => { prop.clearCompleted(e) }}>Clear Completed</button>
+
             </div>
          </section>
       )

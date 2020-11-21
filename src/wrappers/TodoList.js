@@ -8,46 +8,52 @@ export default class tasks extends Component {
    constructor(props) {
       super(props);
       this.state = {
-         tasks: [], // array of objects with task text and it value
+         tasks: [],
          text: '', // text of task
          isChecked: true, // state of 'completeAllTasks' checkbox
+         filterValue: 'All'
       };
    };
 
    updateValue(e) {
-      this.setState({ text: [e.target.value] });
+      this.setState({ text: e.target.value });
    };
+
    addTask(e) {
       e.preventDefault();
       this.setState({
-         tasks: [{ text: this.state.text.toString(), completed: false }, ...this.state.tasks],
+         tasks: [{ text: this.state.text, completed: false }, ...this.state.tasks],
          text: ''
       });
    };
+
    removeTask(index) {
       this.setState({ tasks: this.state.tasks.filter((_, id) => id !== index) });
    };
-   checkHandler(index) {
-      // state handler for task
+
+   checkboxHandler(index) {
       this.setState({
          tasks: this.state.tasks.map((item, id) => id === index ? { ...item, completed: !item.completed } : item)
       });
    };
+
+   filterHandler(event) {
+      this.setState({ filterValue: event.target.value });
+   }
+
    completeAllTasks() {
       this.setState({
          isChecked: !this.state.isChecked,
          tasks: this.state.tasks.map(item => this.state.isChecked ? { ...item, completed: true } : { ...item, completed: false })
       });
    };
-   clearCompleted() {
+
+   clearCompleted(e) {
+      e.preventDefault()
       this.setState({
          tasks: this.state.tasks.filter(item => item.completed === false),
          isChecked: true
       });
-   };
-   handleKeyPress = (e) => {
-      // Prevent line breaks
-      if (e.key === 'Enter') e.preventDefault();
    };
 
    render() {
@@ -63,9 +69,9 @@ export default class tasks extends Component {
                />
                <NewTaskWrapper
                   tasks={state.tasks}
+                  filter={state.filterValue}
                   removeTask={this.removeTask.bind(this)}
-                  handleKeyPress={this.handleKeyPress.bind(this)}
-                  checkHandler={this.checkHandler.bind(this)}
+                  checkboxHandler={this.checkboxHandler.bind(this)}
                />
                <InfoWrapper
                   isChecked={!state.isChecked}
@@ -74,6 +80,8 @@ export default class tasks extends Component {
                />
                <FiltersWrapper
                   filterArr={['All', 'Active', 'Completed']}
+                  filterValue={state.filterValue}
+                  filterHandler={this.filterHandler.bind(this)}
                   clearCompleted={this.clearCompleted.bind(this)}
                />
             </div>
