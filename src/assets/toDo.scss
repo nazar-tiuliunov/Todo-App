@@ -46,15 +46,10 @@
       margin: 0 4px;
       padding: 5px 10px;
       font-size: 14px;
-      border: 2px solid #e6e6ea;
+      //border: 2px solid #e6e6ea;
       background-color: transparent;
       cursor: pointer;
       transition: all .3s ease;
-      -webkit-user-select: none;
-        -webkit-touch-callout: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
       input[type='radio'] {margin-right: 5px;}
       &:first-child {margin: 0 4px 0 0;}
    }
