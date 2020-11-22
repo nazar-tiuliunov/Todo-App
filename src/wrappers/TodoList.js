@@ -15,7 +15,9 @@ export default class tasks extends Component {
       };
    };
 
-   updateValue(e) { this.setState({ text: e.target.value }) };
+   updateValue(e) {
+      this.setState({ text: e.target.value });
+   };
 
    addTask(e) {
       e.preventDefault();
@@ -47,7 +49,7 @@ export default class tasks extends Component {
    };
 
    clearCompleted(e) {
-      e.preventDefault();
+      e.preventDefault()
       this.setState({
          tasks: this.state.tasks.filter(item => item.completed === false),
          isChecked: true
@@ -55,34 +57,32 @@ export default class tasks extends Component {
    };
 
    render() {
-      //const state = this.state
-      const { text, tasks, filterValue, isChecked } = this.state;
-      const { updateValue, addTask, removeTask, checkboxHandler, filterHandler, completeAllTasks, clearCompleted } = this;
+      const state = this.state;
       return (
          <main className="todo">
             <div className="todo__flex">
                <HeaderWrapper
-                  text={text}
-                  tasks={tasks}
-                  addTask={addTask.bind(this)}
-                  updateValue={updateValue.bind(this)}
+                  text={state.text}
+                  tasks={state.tasks}
+                  addTask={this.addTask.bind(this)}
+                  updateValue={this.updateValue.bind(this)}
                />
                <NewTaskWrapper
-                  tasks={tasks}
-                  filter={filterValue}
-                  removeTask={removeTask.bind(this)}
-                  checkboxHandler={checkboxHandler.bind(this)}
+                  tasks={state.tasks}
+                  filter={state.filterValue}
+                  removeTask={this.removeTask.bind(this)}
+                  checkboxHandler={this.checkboxHandler.bind(this)}
                />
                <InfoWrapper
-                  isChecked={!isChecked}
-                  tasks={tasks}
-                  completeAllTasks={completeAllTasks.bind(this)}
+                  isChecked={!state.isChecked}
+                  tasks={state.tasks}
+                  completeAllTasks={this.completeAllTasks.bind(this)}
                />
                <FiltersWrapper
                   filterArr={['All', 'Active', 'Completed']}
-                  filterValue={filterValue}
-                  filterHandler={filterHandler.bind(this)}
-                  clearCompleted={clearCompleted.bind(this)}
+                  filterValue={state.filterValue}
+                  filterHandler={this.filterHandler.bind(this)}
+                  clearCompleted={this.clearCompleted.bind(this)}
                />
             </div>
          </main>

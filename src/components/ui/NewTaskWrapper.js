@@ -3,22 +3,25 @@ import Task from "./Task";
 
 export default class NewTaskWrapper extends Component {
    render() {
-      const { tasks, filter, removeTask, checkboxHandler } = this.props;
+      const prop = this.props;
       return (
          <section className='todo__newTasks'>
             <div className="container newTasks">
-               {tasks.filter(item => {
-                  switch (filter) {
+               {prop.tasks.filter(item => {
+                  switch (prop.filter) {
                      case 'Active':
                         return item.completed === false;
                      case 'Completed':
                         return item.completed === true;
                      default:
-                        return item;
+                        return item
                   }
-               }).map(item => {
-                  const id = tasks.indexOf(item); // get index of element in tasks array before filtering
-                  return <Task key={id} {...{ item, id, removeTask, checkboxHandler }} />
+               }).map((item, index) => {
+                  return <Task item={item}
+                     index={prop.tasks.indexOf(item)}
+                     key={index}
+                     removeTask={prop.removeTask.bind(this)}
+                     checkboxHandler={prop.checkboxHandler.bind(this)} />
                })}
             </div>
          </section>

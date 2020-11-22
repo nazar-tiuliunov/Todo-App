@@ -2,16 +2,16 @@ import React, { Component } from 'react'
 
 export default class Filter extends Component {
    render() {
-      const { value, filterValue, filterHandler } = this.props;
+      const prop = this.props;
       return (
          <label className='todo__filter'>
             <input
                type='radio'
-               value={value}
-               checked={filterValue === value}
-               onChange={(event) => { filterHandler(event) }}
+               value={prop.value}
+               checked={prop.filterValue === prop.value}
+               onChange={(event) => { prop.filterHandler(event) }}
             />
-            {value}
+            {prop.value}
          </label>
       )
    }
