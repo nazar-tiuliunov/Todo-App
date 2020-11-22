@@ -3,7 +3,6 @@ import Form from './Form';
 
 export default class headerWrapper extends Component {
    render() {
-      const prop = this.props;
       return (
          <header>
             <h1 className='todo__title'>Todo App</h1>
