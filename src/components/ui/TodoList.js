@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import HeaderWrapper from '../ui/HeaderWrapper';
-import NewTaskWrapper from '../ui/NewTaskWrapper';
-import InfoWrapper from '../ui/InfoWrapper'
-import FiltersWrapper from '../ui/FiltersWrapper';
+import HeaderWrapper from './HeaderWrapper';
+import NewTaskWrapper from './NewTaskWrapper';
+import InfoWrapper from './InfoWrapper'
+import FiltersWrapper from './FiltersWrapper';
 
 export default class tasks extends Component {
    constructor(props) {
