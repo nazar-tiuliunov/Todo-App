@@ -2,14 +2,15 @@ import React, { Component } from 'react'
 
 export default class Form extends Component {
    render() {
+      const { text, addTask, updateValue } = this.props;
       return (
-         <form className="todo__form" onSubmit={(e) => { this.props.addTask(e) }}>
+         <form className="todo__form" onSubmit={(e) => { addTask(e) }}>
             <input className="todo__form_enterTask"
                type="text"
                required
                placeholder="Enter new task"
-               value={this.props.text}
-               onChange={(e) => { this.props.updateValue(e) }} />
+               value={text}
+               onChange={(e) => { updateValue(e) }} />
          </form>
       )
    }

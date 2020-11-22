@@ -9,10 +9,7 @@ export default class headerWrapper extends Component {
             <h1 className='todo__title'>Todo App</h1>
             <section className="todo__addTask">
                <div className="container addTask">
-                  <Form text={prop.text}
-                     tasks={prop.tasks}
-                     addTask={prop.addTask.bind(this)}
-                     updateValue={prop.updateValue.bind(this)} />
+                  <Form {...this.props} />
                </div>
             </section>
          </header>
