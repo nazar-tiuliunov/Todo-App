@@ -1,11 +1,12 @@
 .todo {
    display: grid;
-   place-items: center;
-   min-height: 100vh;
+   flex: 1 1 auto;
+   justify-content: center;
+   align-content: center;
    &__flex {
       display: flex;
       flex-direction: column;
-      width: clamp(310px, 50%, 700px);
+      width: clamp(300px, 45vw, 50vw);
       height: 500px
    }
    &__title {
@@ -35,6 +36,7 @@
       &_text {
          padding-left: 5px;
          font-size: 14px;
+         &:last-child {margin-left: auto;}
       }
    }
    &__filters {
@@ -50,17 +52,18 @@
       background-color: transparent;
       cursor: pointer;
       transition: all .3s ease;
-      -webkit-user-select: none;
-        -webkit-touch-callout: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      input[type='radio'] {margin-right: 5px;}
+      user-select: none;
+      outline: none;
       &:first-child {margin: 0 4px 0 0;}
+      &:last-child {margin-left: auto;}
+      &.active {
+         border-color: #34b7aa;
+         background-color: #40e0d0;
+      }
    }
    &__form {
       &_enterTask {
-         width: 70%;
+         width: 80%;
          padding: 5px;
          border: 2px solid #e6e6ea;
          outline: none;
@@ -100,7 +103,6 @@
       display: flex;
       align-items: center;
       padding: 10px 0;
-      :last-child {margin-left: auto;}
    }
    &.info {
       @extend .container.filter;
@@ -110,4 +112,19 @@
       padding-top: 10px;
    }
 
+}
+@media only screen and (max-width: 764px) {
+   .container.filter {
+      justify-content: center;
+      flex-wrap: wrap;
+   }
+   .todo {
+      &__newTasks {
+         flex: 0 0 50%;
+      }
+      &__filter {
+         margin: 5px;
+         &:last-child {margin-left: 0;}
+      }
+   }
 }

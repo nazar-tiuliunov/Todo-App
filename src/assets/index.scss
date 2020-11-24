@@ -32,11 +32,14 @@ a {
 }
 input { margin: 0;}
 .wrapper {
+
+}
+#root {
 	display: flex;
 	flex-direction: column;
 	position: relative;
-   min-height: 100vh;
 	overflow: hidden;
+	min-height: 100%;
 }
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;1,300&display=swap');
 @import './toDo.scss'
