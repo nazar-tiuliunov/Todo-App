@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import HeaderWrapper from '../ui/HeaderWrapper';
-import NewTaskWrapper from '../ui/NewTaskWrapper';
-import InfoWrapper from '../ui/InfoWrapper'
-import FiltersWrapper from '../ui/FiltersWrapper';
+import HeaderWrapper from './HeaderWrapper';
+import NewTaskWrapper from './NewTaskWrapper';
+import InfoWrapper from './InfoWrapper'
+import FiltersWrapper from './FiltersWrapper';
 
-export default class tasks extends Component {
+export default class Tasks extends Component {
    constructor(props) {
       super(props);
       this.state = {
@@ -15,10 +15,10 @@ export default class tasks extends Component {
       };
    };
 
-   updateValue(e) { this.setState({ text: e.target.value }) };
+   updateValue(event) { this.setState({ text: event.target.value }) };
 
-   addTask(e) {
-      e.preventDefault();
+   addTask(event) {
+      event.preventDefault();
       this.setState({
          tasks: [{ text: this.state.text, completed: false }, ...this.state.tasks],
          text: ''
@@ -31,25 +31,23 @@ export default class tasks extends Component {
 
    checkboxHandler(index) {
       this.setState({
-         tasks: this.state.tasks.map((item, id) => id === index ? { ...item, completed: !item.completed } : item)
+         tasks: this.state.tasks.map((task, id) => id === index ? { ...task, completed: !task.completed } : task)
       });
    };
 
-   filterHandler(event) {
-      this.setState({ filterValue: event.target.value });
-   }
+   filterHandler(value) { this.setState({ filterValue: value }) };
 
    completeAllTasks() {
       this.setState({
          isChecked: !this.state.isChecked,
-         tasks: this.state.tasks.map(item => this.state.isChecked ? { ...item, completed: true } : { ...item, completed: false })
+         tasks: this.state.tasks.map(task => this.state.isChecked ? { ...task, completed: true } : { ...task, completed: false })
       });
    };
 
-   clearCompleted(e) {
-      e.preventDefault();
+   clearCompleted(event) {
+      event.preventDefault();
       this.setState({
-         tasks: this.state.tasks.filter(item => item.completed === false),
+         tasks: this.state.tasks.filter(task => task.completed === false),
          isChecked: true
       });
    };

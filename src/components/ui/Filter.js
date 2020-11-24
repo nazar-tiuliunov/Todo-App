@@ -4,13 +4,10 @@ export default class Filter extends Component {
    render() {
       const { value, filterValue, filterHandler } = this.props;
       return (
-         <label className='todo__filter'>
-            <input
-               type='radio'
-               value={value}
-               checked={filterValue === value}
-               onChange={(event) => { filterHandler(event) }}
-            />
+         <label
+            className={filterValue === value ? 'todo__filter active' : 'todo__filter'}
+            onClick={() => { filterHandler(value) }}
+         >
             {value}
          </label>
       )

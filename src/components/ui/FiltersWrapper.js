@@ -10,8 +10,7 @@ export default class FiltersWrapper extends Component {
                {filterArr.map((value, index) => {
                   return <Filter key={index} {...{ value, filterValue, index, filterHandler }} />
                })}
-               <button className='todo__filter' onClick={(e) => { clearCompleted(e) }}>Clear Completed</button>
-
+               <button className='todo__filter' onClick={clearCompleted}>Clear Completed</button>
             </div>
          </section>
       )
