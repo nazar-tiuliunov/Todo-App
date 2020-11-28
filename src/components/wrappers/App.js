@@ -2,9 +2,7 @@ import React from 'react';
 import ToDo from '../ui/TodoList';
 
 function App() {
-  return (
-    <ToDo />
-  );
+	return <ToDo />;
 }
 
 export default App;
