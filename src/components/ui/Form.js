@@ -13,6 +13,9 @@ export default class Form extends Component {
 					value={text}
 					onChange={updateValue}
 				/>
+				<button className='todo__button form' type='submit'>
+					Add Task
+				</button>
 			</form>
 		);
 	}

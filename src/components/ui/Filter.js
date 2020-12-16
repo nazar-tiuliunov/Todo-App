@@ -6,7 +6,7 @@ export default class Filter extends Component {
 		return (
 			<label
 				className={
-					filterValue === value ? 'todo__filter active' : 'todo__filter'
+					filterValue === value ? 'todo__button active' : 'todo__button'
 				}
 				onClick={() => {
 					filterHandler(value);

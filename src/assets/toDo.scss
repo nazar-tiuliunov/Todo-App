@@ -6,7 +6,7 @@
 	&__flex {
 		display: flex;
 		flex-direction: column;
-		width: clamp(300px, 45vw, 50vw);
+		width: clamp(300px, 50vw, 60vw);
 		height: 500px;
 	}
 	&__title {
@@ -44,7 +44,7 @@
 	&__filters {
 		flex: 0 0 50px;
 	}
-	&__filter {
+	&__button {
 		display: flex;
 		align-items: center;
 		margin: 0 4px;
@@ -60,7 +60,11 @@
 			margin: 0 4px 0 0;
 		}
 		&:last-child {
-			margin-left: auto;
+			margin: 0 0 0 auto;
+		}
+		&.form {
+			flex: none;
+			margin: 0 0 0 auto;
 		}
 		&.active {
 			border-color: #34b7aa;
@@ -68,8 +72,11 @@
 		}
 	}
 	&__form {
+		display: flex;
+		justify-content: space-between;
 		&_enterTask {
-			width: 80%;
+			flex: 0 1 70%;
+			height: 30px;
 			padding: 5px;
 			border: 2px solid #e6e6ea;
 			outline: none;
@@ -115,10 +122,10 @@
 		width: 100%;
 	}
 	&.addTask {
-		padding-top: 10px;
+		padding: 10px 0;
 	}
 }
-@media only screen and (max-width: 764px) {
+@media only screen and (max-width: 669px) {
 	.container.filter {
 		justify-content: center;
 		flex-wrap: wrap;
@@ -127,10 +134,23 @@
 		&__newTasks {
 			flex: 0 0 50%;
 		}
-		&__filter {
+		&__info {
+			flex: 0 0 30px;
+		}
+		&__button {
+			flex: 1 0 auto;
 			margin: 5px;
+			&:first-child {
+				margin: 5px 5px 5px 0;
+			}
+			&:nth-child(3) {
+				margin-right: 0;
+			}
 			&:last-child {
-				margin-left: 0;
+				margin: 5px 0 0 0;
+			}
+			&.form {
+				margin: 0;
 			}
 		}
 	}

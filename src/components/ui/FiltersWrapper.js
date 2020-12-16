@@ -10,7 +10,7 @@ export default class FiltersWrapper extends Component {
 			clearCompleted,
 		} = this.props;
 		return (
-			<section className='todo__filters'>
+			<section className='todo__buttons'>
 				<div className='container filter'>
 					{filterArr.map((value, index) => {
 						return (
@@ -20,7 +20,7 @@ export default class FiltersWrapper extends Component {
 							/>
 						);
 					})}
-					<button className='todo__filter' onClick={clearCompleted}>
+					<button className='todo__button' onClick={clearCompleted}>
 						Clear Completed
 					</button>
 				</div>
