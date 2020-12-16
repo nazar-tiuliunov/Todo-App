@@ -6,7 +6,7 @@
 	&__flex {
 		display: flex;
 		flex-direction: column;
-		width: clamp(300px, 50vw, 60vw);
+		width: clamp(300px, 40vw, 40vw);
 		height: 500px;
 	}
 	&__title {
@@ -125,7 +125,7 @@
 		padding: 10px 0;
 	}
 }
-@media only screen and (max-width: 669px) {
+@media only screen and (max-width: 839px) {
 	.container.filter {
 		justify-content: center;
 		flex-wrap: wrap;
