@@ -118,7 +118,7 @@
 		padding: 10px 0;
 	}
 	&.info {
-		@extend .container.filter;
+		@extend .filter;
 		width: 100%;
 	}
 	&.addTask {
